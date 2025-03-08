@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { fetchRecipeById } from "../api/recipeService";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { fetchRandomRecipe } from "../api/recipeService";
 import Navbar from "./Navbar";
 
-const RecipeDetail = () => {
-  const { id } = useParams();
+const RandomRecipe = () => {
   const [recipe, setRecipe] = useState(null);
-
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    const getRecipe = async () => {
-      const data = await fetchRecipeById(id);
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+  }, []);
+  useEffect(() => {
+    const getRandomRecipe = async () => {
+      const data = await fetchRandomRecipe();
       if (data) setRecipe(data);
     };
-    getRecipe();
-  }, [id]);
+
+    getRandomRecipe();
+  }, [navigate]);
 
   return (
     <>
@@ -27,7 +34,7 @@ const RecipeDetail = () => {
           alignItems: "center",
         }}
       >
-        <h1> Recipe Details </h1>
+        <h1>Surprise Recipe</h1>
         {recipe ? (
           <div
             style={{
@@ -61,4 +68,4 @@ const RecipeDetail = () => {
   );
 };
 
-export default RecipeDetail;
+export default RandomRecipe;
