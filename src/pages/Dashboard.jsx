@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import RecipeList from "../components/RecipeList";
 import RecipeForm from "../components/RecipeForm";
+import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
   const [recipes, setRecipes] = useState([]);
@@ -17,6 +18,7 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Recipe Dashboard</h1>
+      <Navbar />
       <RecipeForm />
       <RecipeList recipes={recipes} />
     </div>
