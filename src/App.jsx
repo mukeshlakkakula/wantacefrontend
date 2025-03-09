@@ -7,7 +7,7 @@ import Home from "./pages/Home.jsx";
 import RecipeDetail from "./components/RecipeDetails.jsx";
 
 import RandomRecipe from "./components/RandomRecipe.jsx";
-import ProtectedRoute from "./components/ProtectedRoute.jsx"; // Import Protected Route
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 
 function App() {

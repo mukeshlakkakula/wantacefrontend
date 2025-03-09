@@ -77,16 +77,18 @@ textarea {
   transition: border-color 0.3s ease-in-out;
 }
 
-/* Change border color on focus */
 input:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 form {
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px;
+  padding: 20px;
+  padding-top: 40px;
+  max-width: 500px;
 }
 
 .navbar {
@@ -94,4 +96,59 @@ form {
   justify-content: space-around;
   min-width: 100%;
   align-items: center;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+button {
+  padding: 10px 20px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  button {
+    padding: 9px 18px;
+  }
+}
+
+@media (min-width: 1025px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 12px 24px;
+  }
 }

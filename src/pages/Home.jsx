@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-const API_URL = "http://localhost:5000"; // Change this if needed
+const API_URL = "https://wantacebackend.onrender.com";
 
 export default function RecipeApp() {
   const [recipes, setRecipes] = useState([]);
@@ -53,7 +53,7 @@ export default function RecipeApp() {
       );
 
       if (response.ok) {
-        alert(`✅ Recipe ${editId ? "updated" : "added"} successfully!`);
+        alert(`Recipe ${editId ? "updated" : "added"} successfully!`);
         fetchRecipes();
         setFormData({
           title: "",
@@ -64,13 +64,11 @@ export default function RecipeApp() {
         setEditId(null);
       } else {
         const errorMessage = await response.text();
-        alert(
-          `❌ Failed to ${editId ? "update" : "add"} recipe: ${errorMessage}`
-        );
+        alert(`Failed to ${editId ? "update" : "add"} recipe: ${errorMessage}`);
       }
     } catch (error) {
       console.error("Error submitting recipe:", error);
-      alert("❌ An error occurred while submitting the recipe.");
+      alert(" An error occurred while submitting the recipe.");
     }
   };
 

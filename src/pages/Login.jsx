@@ -11,12 +11,12 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://wantacebackend.onrender.com/api/auth/login",
         form
       );
       localStorage.setItem("token", data.token);
 
-      navigate("/");
+      navigate("/dashboard");
       alert("Login Successfully");
     } catch (error) {
       alert("Invalid credentials!");

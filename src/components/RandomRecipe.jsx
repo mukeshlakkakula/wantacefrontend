@@ -48,7 +48,11 @@ const RandomRecipe = () => {
             <img
               src={recipe.image}
               alt={recipe.title}
-              style={{ maxHeight: "500px" }}
+              style={{
+                maxHeight: "500px",
+                maxWidth: "95%",
+                borderRadius: "10px",
+              }}
             />
             <div style={{ minWidth: "40%" }}>
               <h2>Name: {recipe.title}</h2>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
-
+  const location = useLocation();
   useEffect(() => {
     setToken(localStorage.getItem("token"));
   }, [token]);
@@ -12,14 +12,14 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setToken(null);
-    alert("Logout Successfully");
+    alert("Logged out Successfully");
     navigate("/login");
   };
 
   const handleNavigation = () => {
     setIsOpen(false);
   };
-
+  console.log("loc", location);
   return (
     <nav
       style={{
@@ -40,16 +40,17 @@ const Navbar = () => {
           margin: "0 auto",
         }}
       >
-        {/* Logo */}
         <Link
           to="/"
+          onClick={handleNavigation}
           style={{
             color: "#fff",
-            fontSize: "20px",
+            borderStyle: "solid",
+            borderRadius: "25px",
+            padding: "3px",
             fontWeight: "bold",
-            textDecoration: "none",
+            fontFamily: "sans-serif",
           }}
-          onClick={handleNavigation}
         >
           My Recipe
         </Link>
@@ -64,48 +65,32 @@ const Navbar = () => {
           >
             {" "}
             <Link
-              to="/dashboard"
               style={{
                 color: "#fff",
-                padding: "10px 16px",
-                textDecoration: "none",
-                borderRadius: "5px",
-
-                backgroundColor: "#22C55E",
+                fontWeight: "bold",
+                textDecoration:
+                  location.pathname === "/dashboard" ? "underline" : "none",
+                textDecorationThickness: "3px",
               }}
+              to="/dashboard"
               onClick={handleNavigation}
             >
               Dashboard
             </Link>
             <Link
-              to="/Surprise"
               style={{
                 color: "#fff",
-                padding: "10px 16px",
-                textDecoration: "none",
-                borderRadius: "5px",
-
-                backgroundColor: "#22C55E",
+                fontWeight: "bold",
+                textDecoration:
+                  location.pathname === "/Surprise" ? "underline" : "none",
+                textDecorationThickness: "3px",
               }}
+              to="/Surprise"
               onClick={handleNavigation}
             >
               Surprise
             </Link>
-            <button
-              onClick={handleLogout}
-              style={{
-                display: "block",
-                width: "100%",
-                backgroundColor: "#EF4444",
-                color: "#fff",
-                padding: "10px",
-                borderRadius: "5px",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Logout
-            </button>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         ) : (
           <div
@@ -117,31 +102,27 @@ const Navbar = () => {
             }}
           >
             <Link
-              to="/login"
               style={{
-                display: "block",
                 color: "#fff",
-                padding: "10px 16px",
-                textDecoration: "none",
-                borderRadius: "5px",
-                marginBottom: "8px",
-                backgroundColor: "#22C55E",
+                fontWeight: "bold",
+                textDecoration:
+                  location.pathname === "/login" ? "underline" : "none",
+                textDecorationThickness: "3px",
               }}
+              to="/login"
               onClick={handleNavigation}
             >
               Login
             </Link>
             <Link
-              to="/register"
               style={{
-                display: "block",
                 color: "#fff",
-                padding: "10px 16px",
-                textDecoration: "none",
-                borderRadius: "5px",
-                marginBottom: "8px",
-                backgroundColor: "#6B7280",
+                fontWeight: "bold",
+                textDecoration:
+                  location.pathname === "/register" ? "underline" : "none",
+                textDecorationThickness: "3px",
               }}
+              to="/register"
               onClick={handleNavigation}
             >
               Register

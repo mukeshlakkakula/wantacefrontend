@@ -1,6 +1,5 @@
-const API_URL = "http://localhost:5000/recipes"; // Ensure this matches backend routes
+const API_URL = "https://wantacebackend.onrender.com/recipes";
 
-// ✅ Fetch All Recipes
 export const fetchRecipes = async () => {
   try {
     const res = await fetch(API_URL);
@@ -12,7 +11,6 @@ export const fetchRecipes = async () => {
   }
 };
 
-// ✅ Fetch a Single Recipe by ID
 export const fetchRecipeById = async (id) => {
   try {
     const res = await fetch(`${API_URL}/${id}`);
@@ -24,7 +22,6 @@ export const fetchRecipeById = async (id) => {
   }
 };
 
-// ✅ Fetch a Random Recipe
 export const fetchRandomRecipe = async () => {
   try {
     const res = await fetch(`${API_URL}/random`);
@@ -36,7 +33,6 @@ export const fetchRandomRecipe = async () => {
   }
 };
 
-// ✅ Create a New Recipe (Supports Image Upload)
 export const createRecipe = async (formData) => {
   try {
     const formDataToSend = new FormData();
@@ -58,7 +54,6 @@ export const createRecipe = async (formData) => {
   }
 };
 
-// ✅ Update a Recipe (Supports Image Upload)
 export const updateRecipe = async (id, formData) => {
   try {
     const formDataToSend = new FormData();
@@ -68,7 +63,7 @@ export const updateRecipe = async (id, formData) => {
     if (formData.image) formDataToSend.append("image", formData.image);
     const res = await fetch(`${API_URL}/${id}`, {
       method: "PUT",
-      body: formDataToSend, // ✅ FormData to handle image updates
+      body: formDataToSend,
     });
 
     if (!res.ok) throw new Error("Failed to update recipe");
@@ -79,7 +74,6 @@ export const updateRecipe = async (id, formData) => {
   }
 };
 
-// ✅ Delete a Recipe
 export const deleteRecipe = async (id) => {
   try {
     const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
